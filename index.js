@@ -34,21 +34,26 @@ app.use("/api/orders", orderRoute)
 
 // ! DEPLOYMENT !
 
-__dirname = path.resolve()
-if (process.env.NODE_ENV === 'production') {
-    // app.use(express.static(path.join(__dirname, "/client/build")))
-    // app.use(express.static(path.join(__dirname, "../admin/build")))
-    app.get('*', (req, res) => {
-        // res.sendFile(path.resolve(__dirname, "client", 'build', 'index.html'))
-        // res.sendFile(path.resolve(__dirname, "../admin", 'build', 'index.html'))
-    })
-} else {
+// __dirname = path.resolve()
+// if (process.env.NODE_ENV === 'production') {
+//     // app.use(express.static(path.join(__dirname, "/client/build")))
+//     // app.use(express.static(path.join(__dirname, "../admin/build")))
+//     app.get('*', (req, res) => {
+//         res.send({body: "API is running"})
+//         // res.sendFile(path.resolve(__dirname, "client", 'build', 'index.html'))
+//         // res.sendFile(path.resolve(__dirname, "../admin", 'build', 'index.html'))
+//     })
+// } else {
 
-}
+// }
+
+app.get('*', (req, res) => {
+    res.send("API is running")
+})
 
 // ! end of deployment !
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
-    console.log("backend server is running at PORT:", PORT)
+    console.log("Server is running at PORT:", PORT)
 })
