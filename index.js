@@ -34,18 +34,17 @@ app.use("/api/orders", orderRoute)
 
 // ! DEPLOYMENT !
 
-// __dirname = path.resolve()
-// if (process.env.NODE_ENV === 'production') {
-//     app.use(express.static(path.join(__dirname, "/client/build")))
-//     // app.use(express.static(path.join(__dirname, "../admin/build")))
-//     app.get('*', (req, res) => {
-//         res.sendFile(path.resolve(__dirname, "client", 'build', 'index.html'))
-//         // res.sendFile(path.resolve(__dirname, "../admin", 'build', 'index.html'))
-//         console.log((__dirname, "client", 'build', 'index.html'))
-//     })
-// } else {
+__dirname = path.resolve()
+if (process.env.NODE_ENV === 'production') {
+    // app.use(express.static(path.join(__dirname, "/client/build")))
+    // app.use(express.static(path.join(__dirname, "../admin/build")))
+    app.get('*', (req, res) => {
+        // res.sendFile(path.resolve(__dirname, "client", 'build', 'index.html'))
+        // res.sendFile(path.resolve(__dirname, "../admin", 'build', 'index.html'))
+    })
+} else {
 
-// }
+}
 
 // ! end of deployment !
 
