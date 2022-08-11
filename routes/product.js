@@ -54,8 +54,8 @@ router.post("/", verifyTokenAndAdmin,
             imgAlt: req.body.imgAlt || req.body.coverAlt,
             categories: req.body.categories,
             versions: req.body.versions,
-            artistFormatted: req.body.artist,
-            artist: req.body.artist.toLowerCase(),
+            artistFormatted: req.body.artist || '',
+            artist: req.body.artist.toLowerCase() || '',
         })
 
         // if (!newProduct.img) {
@@ -94,6 +94,10 @@ router.put("/:id", verifyTokenAndAdmin,
             req.body.cover = coverImg.secure_url
         }
         
+        if (!req.body.artist) {
+            req.body.artist = ''
+        } 
+
         req.body.artistFormatted = req.body.artist
         req.body.artist = req.body.artist.toLowerCase()
 

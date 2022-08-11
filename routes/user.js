@@ -2,6 +2,7 @@
 const router = require("express").Router()
 const { verifyToken, verifyTokenAndAdmin, verifyTokenAndAuth } = require("./verifyToken")
 const User = require("../models/User")
+const CryptoJS = require("crypto-js")
 
 const upload = require("../utilities/multer")
 const cloudinary = require("../utilities/cloudinary")
