@@ -13,9 +13,11 @@ const ProductSchema = new mongoose.Schema(
         categories: { type: Array },
         versions: { type: Array },
         price: { type: Number, required: false },
-        bg: { type: String, required: false },
+        bg: { type: String, required: false }
+        
     },
-    { timestamps: true }
+    { timestamps: true },
 )
 
+ProductSchema.index({'$**': 'text'})
 module.exports = mongoose.model("Product", ProductSchema)

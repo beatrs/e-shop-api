@@ -15,6 +15,7 @@ const userAuth = require("./routes/auth")
 const productRoute = require("./routes/product")
 const cartRoute = require("./routes/cart")
 const orderRoute = require("./routes/order")
+const wishRoute = require("./routes/wishlist")
 
 // * connect to mongodb ccloud cluster0
 mongoose.connect(process.env.MONGO_URL)
@@ -30,6 +31,7 @@ app.use("/api/auth", userAuth)
 app.use("/api/products", productRoute)
 app.use("/api/cart", cartRoute)
 app.use("/api/orders", orderRoute)
+app.use("/api/wish", wishRoute)
 
 
 // ! DEPLOYMENT !

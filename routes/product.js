@@ -127,6 +127,7 @@ router.get("/", async (req, res) => {
         const queryNew = req.query.new
         const queryCategory = req.query.category
         const queryArtists = req.query.artists
+        const querySearch = req.query.s
         
         let products
         if (queryArtists === 'all') {
@@ -141,6 +142,17 @@ router.get("/", async (req, res) => {
                     $in: [queryCategory]
                 },
             })
+        } else if (querySearch) {
+            console.log(querySearch)
+            products = await Product.find(
+                {$or: 
+                    [
+                        {$text: {$search: querySearch}}, 
+                        {title: {$regex: querySearch, $options: "i"}}
+                    ]
+                }
+            )
+            console.log(products)
         } else {
             products = await Product.find()
         }
