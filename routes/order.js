@@ -16,7 +16,7 @@ router.post("/", verifyToken, async (req, res) => {
 })
 
 // * UPDATE order status
-router.put("/:id/:newStatus", verifyTokenAndAuth, async (req, res) => {
+router.put("/:id/:newStatus", verifyToken, async (req, res) => {
     console.log(req.params.newStatus)
     try {
         const updatedOrder = await Order.findByIdAndUpdate(req.params.id, {

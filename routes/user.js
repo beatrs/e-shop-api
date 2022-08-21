@@ -14,7 +14,7 @@ const defaultOptions = {
 const defaultImg = 'https://raw.githubusercontent.com/mozilla/fxa/9ca5c4057cde5da1e2866cb9515e88bb18e5fb2b/packages/fxa-profile-server/lib/assets/default-profile.png'
 
 // * UPDATE
-router.put("/:id", verifyTokenAndAuth, upload.single('profileImg'), async (req, res) => {
+router.put("/:id", verifyToken, upload.single('profileImg'), async (req, res) => {
 
     if (req.file) {
         const profile_img = await cloudinary.uploader
