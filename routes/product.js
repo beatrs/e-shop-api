@@ -134,8 +134,8 @@ router.get("/", async (req, res) => {
             artists = await Product.distinct('artistFormatted')
             return res.status(200).json(artists)
         }
-        else if (queryNew) {
-            products = await Product.find().sort({ createdAt: -1 }).limit(5)
+        else if (queryNew === 'true') {
+            products = await Product.find().sort({ createdAt: -1 }).limit(10)
         } else if (queryCategory) {
             products = await Product.find({
                 categories: {
